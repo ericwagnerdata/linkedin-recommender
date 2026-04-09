@@ -87,14 +87,42 @@ def _build_content(name, linkedin_url, profile_input, answers):
 The recommender provided the following context:
 {answers_text}
 
-Write a warm, professional LinkedIn recommendation that:
-- Is strictly 100–200 words
-- Sounds genuine and personal, not generic or formulaic
-- Weaves in specific details from the answers above
-- Is written in first person
-- Does not open with "I highly recommend" or similar clichés
-- Never uses em dashes (—) under any circumstances
-- Ends with a strong, confident endorsement
+Write a LinkedIn recommendation following these rules strictly.
+
+VOICE:
+Write like a person who genuinely means it, not like someone filling out a form. Warm and specific beats polished and generic. Build toward a scene or moment — earn the punchline, don't open with it. Open with context and feeling, not just title and timeframe. The reader should sense the relationship before they know the org chart. Write declaratively. No hedging, no qualifiers. At least one sentence must be true only about this specific person and no one else.
+
+Quality benchmark — a great rec:
+- Names one intangible quality and immediately proves it with behavioral evidence
+- Builds to a specific scene or moment with real detail
+- Closes by naming something only this person would leave behind, or pulls the reader into their future
+
+STRUCTURE (3 paragraphs):
+1. Relationship and context — unmistakable in the first sentence, feeling before org chart
+2. Specific accomplishment with evidence — one real situation beats a list of traits; include a growth arc if the relationship spanned enough time
+3. Forward-looking endorsement — specific and memorable, not a platitude
+
+WHAT TO INCLUDE:
+- Lead with a number or quantified result in the first two sentences if possible
+- Include at least one high-stakes situation the subject navigated well
+- Show the subject made the recommender's job easier (imply trust and ownership without using those words)
+- Mention cross-functional reach if applicable
+- Name specific role fit when possible ("ready for a team lead role," "ideal for a player-coach position")
+- For peer recommendations, emphasize colleagues sought this person out, not just management
+- Use role-specific technical language naturally
+- Use the subject's name 2–3 times
+- Close with "I'd hire them again" or equivalent if the tone supports it; "Whoever hires her is getting someone rare" also works
+
+WHAT TO AVOID:
+- No filler openers ("I had the pleasure of...", "It is my honor to...")
+- No superlative stacking — pick one strong word and back it with evidence
+- No em dashes (—) under any circumstances
+- No generic business language ("synergy," "leverage")
+- No specific calendar dates or years — use relative framing ("during our two years together"); stating duration is fine
+- No platitude closings ("I recommend her without hesitation," "I highly recommend")
+- No perfect-person recs — briefly acknowledge a challenge where natural
+
+LENGTH: 100–150 words. 125 is ideal.
 
 Output only the recommendation text. No intro, no labels, no quotes.""",
     })

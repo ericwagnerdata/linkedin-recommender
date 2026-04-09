@@ -12,7 +12,8 @@
       "Bash(py main.py add \"Masud Chowdry\")",
       "Bash(py -m pip install -q click anthropic)",
       "Bash(py main.py add \"Charlie Gilmore\")",
-      "Bash(py -c ':*)"
+      "Bash(py -c ':*)",
+      "Bash(py -c \"from pipeline import load_pipeline, _write_pipeline_doc; _write_pipeline_doc\\(load_pipeline\\(\\)\\)\")"
     ]
   }
 }
