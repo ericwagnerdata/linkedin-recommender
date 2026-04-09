@@ -118,57 +118,40 @@ def _write_pipeline_doc(data):
     pending   = [p for p in people if p["status"] == "pending"]
     completed = [p for p in people if p["status"] == "completed"]
 
+    def status_emoji(p):
+        return "✅" if p["status"] == "completed" else "🟡"
+
     def url_cell(p):
-        return f"[profile]({p['linkedin_url']})" if p.get("linkedin_url") else "_TBD_"
+        return f"[LinkedIn]({p['linkedin_url']})" if p.get("linkedin_url") else "_TBD_"
+
+    def file_cell(p):
+        path = Path(p["people_file"])
+        return f"[notes]({path.relative_to(PIPELINE_DOC.parent).as_posix()})" if path.exists() else ""
+
+    def date_cell(p):
+        return p["completed_date"] if p["status"] == "completed" else p["added_date"]
+
+    def notes_cell(p):
+        if p["status"] == "completed":
+            return "Recommendation written"
+        if not p.get("linkedin_url"):
+            return "Needs LinkedIn URL"
+        return "Needs screenshot"
 
     lines = [
         "# LinkedIn Recommendation Pipeline",
         "",
-        f"_Last updated: {date.today()}_",
+        f"_Last updated: {date.today()} — {len(completed)}/{len(people)} complete_",
         "",
-        "---",
-        "",
-        "## Summary",
-        "",
-        "| Stage | Count |",
-        "|-------|-------|",
-        f"| Pending | {len(pending)} |",
-        f"| Completed | {len(completed)} |",
-        f"| **Total** | **{len(people)}** |",
-        "",
-        "---",
-        "",
-        f"## Pending ({len(pending)})",
-        "",
+        "| # | Status | Date | Name | Notes | File |",
+        "|---|--------|------|------|-------|------|",
     ]
 
-    if pending:
-        lines += [
-            "| Name | LinkedIn | Added |",
-            "|------|----------|-------|",
-        ]
-        for p in pending:
-            lines.append(f"| {p['name']} | {url_cell(p)} | {p['added_date']} |")
-    else:
-        lines.append("_No pending recommendations._")
-
-    lines += [
-        "",
-        "---",
-        "",
-        f"## Completed ({len(completed)})",
-        "",
-    ]
-
-    if completed:
-        lines += [
-            "| Name | LinkedIn | Completed |",
-            "|------|----------|-----------|",
-        ]
-        for p in completed:
-            lines.append(f"| {p['name']} | {url_cell(p)} | {p['completed_date']} |")
-    else:
-        lines.append("_No recommendations written yet._")
+    for i, p in enumerate(people, 1):
+        lines.append(
+            f"| {i} | {status_emoji(p)} | {date_cell(p)} | {p['name']} "
+            f"| {notes_cell(p)} | {file_cell(p)} |"
+        )
 
     lines.append("")
     PIPELINE_DOC.write_text("\n".join(lines), encoding="utf-8")
