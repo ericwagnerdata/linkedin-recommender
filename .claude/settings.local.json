@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where py:*)",
+      "Bash(where python3.exe)",
+      "Bash(where python.exe)",
+      "Read(//c/Users/ericc/AppData/Local/Programs/Python//**)",
+      "Bash(py main.py add \"Lisa Muir\")",
+      "Bash(py main.py add \"James Gunipero\")",
+      "Bash(py main.py add \"Priya Srinivasan\")",
+      "Bash(py main.py add \"Patrick Malloy\")",
+      "Bash(py main.py add \"Masud Chowdry\")",
+      "Bash(py -m pip install -q click anthropic)",
+      "Bash(py main.py add \"Charlie Gilmore\")",
+      "Bash(py -c ':*)"
+    ]
+  }
+}
