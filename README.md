@@ -2,6 +2,8 @@
 
 An easy way to write up LinkedIn recommendations for colleagues who deserve it.
 
+![LinkedIn Recommender in action](docs/linkedin-recommender.png)
+
 ## Why this exists
 
 Most LinkedIn recommendations read the same: a job title, a few adjectives, a closing line about hiring the person again. They're easy to write and easy to forget. The people who actually deserve a recommendation deserve better than that.
